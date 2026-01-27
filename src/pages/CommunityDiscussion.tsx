@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Search, Plus, MessageCircle, ThumbsUp, Clock, User } from 'lucide-react';
+import { ArrowLeft, Search, Plus, MessageCircle, ThumbsUp, Clock, User } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { MobileLayout } from '@/components/layout/MobileLayout';
 import { cn } from '@/lib/utils';
 
@@ -74,7 +75,8 @@ const categoryColors: Record<string, string> = {
   'Électronique': 'bg-category-electronics/10 text-category-electronics',
 };
 
-export default function Discussions() {
+export default function CommunityDiscussion() {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [filter, setFilter] = useState<'all' | 'resolved' | 'unresolved'>('all');
 
@@ -89,8 +91,17 @@ export default function Discussions() {
     <MobileLayout>
       <div className="p-4 pt-6">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-foreground">Discussions</h1>
+        <div className="flex items-center gap-3 mb-6">
+          <button
+            onClick={() => navigate('/discussions')}
+            className="p-2 rounded-full bg-card shadow-card hover:shadow-card-hover transition-all"
+          >
+            <ArrowLeft className="w-5 h-5 text-foreground" />
+          </button>
+          <div className="flex-1">
+            <h1 className="text-xl font-bold text-foreground">Communauté</h1>
+            <p className="text-xs text-muted-foreground">Échangez avec les apprenants</p>
+          </div>
           <button className="p-2.5 rounded-full bg-primary text-primary-foreground shadow-lg hover:opacity-90 transition-all">
             <Plus className="w-5 h-5" />
           </button>

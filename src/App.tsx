@@ -8,7 +8,10 @@ import MyCourses from "./pages/MyCourses";
 import CourseDetail from "./pages/CourseDetail";
 import Lesson from "./pages/Lesson";
 import Profile from "./pages/Profile";
-import Discussions from "./pages/Discussions";
+import DiscussionSelect from "./pages/DiscussionSelect";
+import CommunityDiscussion from "./pages/CommunityDiscussion";
+import TeacherDiscussion from "./pages/TeacherDiscussion";
+import AIDiscussion from "./pages/AIDiscussion";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,7 +28,10 @@ const App = () => (
           <Route path="/course/:id" element={<CourseDetail />} />
           <Route path="/course/:id/chapter/:chapterId/lesson/:lessonId" element={<Lesson />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/discussions" element={<Discussions />} />
+          <Route path="/discussions" element={<DiscussionSelect />} />
+          <Route path="/discussions/community" element={<CommunityDiscussion />} />
+          <Route path="/discussions/teacher" element={<TeacherDiscussion />} />
+          <Route path="/discussions/ai" element={<AIDiscussion />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
