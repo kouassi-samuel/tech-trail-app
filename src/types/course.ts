@@ -9,13 +9,30 @@ export interface Category {
   courseCount: number;
 }
 
+export interface Question {
+  id: string;
+  text: string;
+  options: string[];
+  correctAnswer: number;
+  explanation?: string;
+}
+
+export interface Exercise {
+  id: string;
+  title: string;
+  questions: Question[];
+}
+
 export interface Lesson {
   id: string;
   title: string;
   duration: string;
-  content: string;
+  videoUrl?: string;
+  textContent: string;
+  keyPoints?: string[];
   isCompleted: boolean;
   hasExercise: boolean;
+  exercise?: Exercise;
 }
 
 export interface Chapter {
@@ -24,6 +41,7 @@ export interface Chapter {
   description: string;
   lessons: Lesson[];
   hasFinalExercise: boolean;
+  finalExercise?: Exercise;
   isCompleted: boolean;
 }
 
@@ -42,20 +60,8 @@ export interface Course {
   studentsCount: number;
   chapters: Chapter[];
   isEnrolled: boolean;
-}
-
-export interface Exercise {
-  id: string;
-  type: 'lesson' | 'chapter';
-  title: string;
-  questions: Question[];
-}
-
-export interface Question {
-  id: string;
-  text: string;
-  options: string[];
-  correctAnswer: number;
+  level?: 'Débutant' | 'Intermédiaire' | 'Avancé';
+  finalTest?: Exercise;
 }
 
 export interface UserProgress {

@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import MyCourses from "./pages/MyCourses";
 import CourseDetail from "./pages/CourseDetail";
 import Lesson from "./pages/Lesson";
+import CourseTest from "./pages/CourseTest";
 import Profile from "./pages/Profile";
 import DiscussionSelect from "./pages/DiscussionSelect";
 import CommunityDiscussion from "./pages/CommunityDiscussion";
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/courses" element={<MyCourses />} />
           <Route path="/course/:id" element={<CourseDetail />} />
           <Route path="/course/:id/chapter/:chapterId/lesson/:lessonId" element={<Lesson />} />
+          <Route path="/course/:id/test" element={<CourseTest />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/discussions" element={<DiscussionSelect />} />
           <Route path="/discussions/community" element={<CommunityDiscussion />} />

@@ -5,6 +5,7 @@ import { CourseCard } from '@/components/ui/CourseCard';
 import { courses, categories } from '@/data/courses';
 import { cn } from '@/lib/utils';
 import { useSearchParams } from 'react-router-dom';
+import { useEnrollment } from '@/hooks/useEnrollment';
 
 type TabType = 'all' | 'enrolled' | 'completed';
 
@@ -22,17 +23,17 @@ export default function MyCourses() {
     { id: 'completed', label: 'Terminés' },
   ];
 
-  const filteredCourses = courses.filter(course => {
-    // Tab filter
+  const { isEnrolled } = useEnrollment();
+  const mergedCourses = courses.map((c) => ({
+    ...c,
+    isEnrolled: c.isEnrolled || isEnrolled(c.id),
+  }));
+
+  const filteredCourses = mergedCourses.filter(course => {
     if (activeTab === 'enrolled' && !course.isEnrolled) return false;
     if (activeTab === 'completed' && course.progress < 100) return false;
-    
-    // Category filter
     if (selectedCategory && course.category !== selectedCategory) return false;
-    
-    // Search filter
     if (searchQuery && !course.title.toLowerCase().includes(searchQuery.toLowerCase())) return false;
-    
     return true;
   });
 
