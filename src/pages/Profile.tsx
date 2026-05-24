@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { 
   User, 
   Settings, 
@@ -15,6 +16,7 @@ import { ProgressRing } from '@/components/ui/ProgressRing';
 import { courses } from '@/data/courses';
 
 export default function Profile() {
+  const navigate = useNavigate();
   const enrolledCourses = courses.filter(c => c.isEnrolled);
   const completedLessons = 48;
   const totalHours = 24;
