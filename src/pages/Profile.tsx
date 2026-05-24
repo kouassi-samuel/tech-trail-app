@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { 
   User, 
   Settings, 
@@ -15,6 +16,7 @@ import { ProgressRing } from '@/components/ui/ProgressRing';
 import { courses } from '@/data/courses';
 
 export default function Profile() {
+  const navigate = useNavigate();
   const enrolledCourses = courses.filter(c => c.isEnrolled);
   const completedLessons = 48;
   const totalHours = 24;
@@ -28,6 +30,12 @@ export default function Profile() {
     { icon: Settings, label: 'Paramètres' },
     { icon: HelpCircle, label: "Centre d'aide" },
   ];
+
+  const handleLogout = () => {
+    localStorage.removeItem('auth_user');
+    localStorage.removeItem('onboarding_done');
+    navigate('/onboarding');
+  };
 
   return (
     <MobileLayout>
@@ -141,7 +149,10 @@ export default function Profile() {
         </div>
 
         {/* Logout */}
-        <button className="w-full flex items-center justify-center gap-2 p-4 rounded-xl bg-destructive/10 text-destructive hover:bg-destructive/20 transition-colors">
+        <button
+          onClick={handleLogout}
+          className="w-full flex items-center justify-center gap-2 p-4 rounded-xl bg-destructive/10 text-destructive hover:bg-destructive/20 transition-colors"
+        >
           <LogOut className="w-5 h-5" />
           <span className="font-medium">Se déconnecter</span>
         </button>
