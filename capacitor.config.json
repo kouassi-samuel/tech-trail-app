@@ -1,0 +1,9 @@
+{
+  "appId": "app.lovable.36502aa827ab4d108dd4c32922491896",
+  "appName": "e-learning",
+  "webDir": "dist",
+  "server": {
+    "url": "https://36502aa8-27ab-4d10-8dd4-c32922491896.lovableproject.com?forceHideBadge=true",
+    "cleartext": true
+  }
+}
