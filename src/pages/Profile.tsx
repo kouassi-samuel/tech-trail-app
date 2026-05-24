@@ -149,7 +149,10 @@ export default function Profile() {
         </div>
 
         {/* Logout */}
-        <button className="w-full flex items-center justify-center gap-2 p-4 rounded-xl bg-destructive/10 text-destructive hover:bg-destructive/20 transition-colors">
+        <button
+          onClick={handleLogout}
+          className="w-full flex items-center justify-center gap-2 p-4 rounded-xl bg-destructive/10 text-destructive hover:bg-destructive/20 transition-colors"
+        >
           <LogOut className="w-5 h-5" />
           <span className="font-medium">Se déconnecter</span>
         </button>
