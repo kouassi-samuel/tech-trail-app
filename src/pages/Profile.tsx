@@ -31,6 +31,12 @@ export default function Profile() {
     { icon: HelpCircle, label: "Centre d'aide" },
   ];
 
+  const handleLogout = () => {
+    localStorage.removeItem('auth_user');
+    localStorage.removeItem('onboarding_done');
+    navigate('/onboarding');
+  };
+
   return (
     <MobileLayout>
       <div className="p-4 pt-6">
